@@ -1,4 +1,5 @@
 
+
 //richtung 
 let direction = 'right';
 
@@ -30,15 +31,14 @@ function setup() {
 
 
 // check if snake have the same position as obstacle
- function colision() {
-  if (snakeX === obstacleX && snakeY === obstacleY) {
-    console.log('hello')
-     obstacleX = random(0,950);
-     obstacleY = random(0,550);
-  } else { 
-    console.log('no')
-  }
-}
+// function colision() {
+//  if (snakeX === obstacleX && snakeY === obstacleY) {
+//    console.log('hello')
+//     obstacleX = random(0,950);
+//     obstacleY = random(0,550);
+//  } else { 
+//  }
+//}
 
 
 
@@ -55,12 +55,16 @@ function move () {
   }
 }
 
+function drawGrid(){
+  line(50,0,50,600);
+  line(0,50,1000 ,50); 
+}
 
 // draw´s  
 function draw() {
   move();
-  colision();
-
+//  colision();
+  
 //keyPressed()
 //snakeY = snakeY + speed
 // cleared Background
@@ -86,6 +90,8 @@ function draw() {
   } else if (snakeY>600){
   snakeY = -50;
   }
+  drawGrid()
+  
 }  
 
 
@@ -117,4 +123,3 @@ function keyPressed() {
     speed = 5;
   }
 } 
-hadgiagidgabgdi
