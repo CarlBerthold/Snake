@@ -1,11 +1,14 @@
-
+window.addEventListener("DOMContentLoaded", event => {
+  const audio = document.querySelector("audio");
+  audio.volume = 0.2;
+  audio.play();
+});
 
 //richtung 
 let direction = 'right';
 
 // geschwindigkeit entlang der x Achse +rechts -Links
-let speed = 5;  
-
+let speed = 0;  
 
 
 
@@ -17,28 +20,59 @@ function preload() {
 
 
 //setup a canvas
-function setup() {
+function setup() { 
     // make it fullscreen (windowWidth, windowHeight)
-    createCanvas(1000, 600);
+    createCanvas(windowWidth, windowHeight);
+
     // position of my Snake randomly
-    snakeX = random(50,950);
-    snakeY = random(50,550);
+   //snakeX = random(50,windowWidth-50);;
+   //snakeY = random(50,windowHeight-50);
+    snakeWidth = 50;
+    snakeHeight = 50;
+    snakeX = 50;
+    snakeY = 100;
+
+    
+    
     // position of my Obstacle randomly
-    obstacleX = random(0,950);
-    obstacleY = random(0,550);
+   //obstacleX = random(50,windowWidth-50);
+   //obstacleY = random(50,windowHeight-50);
+    obstacleWidth = 50;
+    obstacleHeight = 50;
+    obstacleX = 100;
+    obstacleY = 100;
+
+    
+    
+       
 }
 
 
 
 // check if snake have the same position as obstacle
-// function colision() {
-//  if (snakeX === obstacleX && snakeY === obstacleY) {
-//    console.log('hello')
-//     obstacleX = random(0,950);
-//     obstacleY = random(0,550);
-//  } else { 
-//  }
-//}
+ function colision() {
+   //if (snakeY + snakeHeight < obstacleHeight && snakeX+ snakeWidth < obstacleWidth){
+  
+   if (snakeX <= obstacleX && obstacleX> snakeX) {
+    console.log('links')
+ //  //obstacleX = random(0,950);
+ //  //obstacleY = random(0,550);
+ //   //snakeWidth++
+}
+//
+  if (snakeX >= obstacleX && obstacleX < snakeX) {
+    console.log('rechts')
+  }
+
+if (snakeY <= obstacleY && obstacleY< snakeY) {
+  console.log('oben')
+}
+
+if (snakeY >= obstacleY && obstacleX > snakeX) {
+  console.log('unten')
+}
+
+}
 
 
 
@@ -56,15 +90,26 @@ function move () {
 }
 
 function drawGrid(){
-  line(50,0,50,600);
-  line(0,50,1000 ,50); 
+  for (let i = 0; i <= windowWidth ; i += 50) {
+    strokeWeight(1);
+    line(0, i, windowWidth, i) // horizontal lines - y changes 
+    line(i, 0, i, windowHeight) //vertical lines - x changes   
 }
 
+  //line(50,0,50,600)
+  //line(0,50,1000 ,50)
+  
+  
+  
+ 
+}
+
+
+  
 // draw´s  
 function draw() {
   move();
-//  colision();
-  
+  colision();
 //keyPressed()
 //snakeY = snakeY + speed
 // cleared Background
@@ -76,21 +121,22 @@ function draw() {
   stroke('red');
   fill('red');
   //draws a snake
-  rect(snakeX,snakeY,50,50)
+  rect(snakeX,snakeY,snakeHeight,snakeWidth)
    // Was passiert wenn ich den Bildschirmrand erreiche
    //wenn x das rechte Ende berührt snakeX erscheint am linken Rand 
-   if (snakeX>1000) {
+   if (snakeX>windowWidth) {
    snakeX = -50;
    } else if (snakeX<=-50) {
-   snakeX = 1000;
+   snakeX = windowWidth;
    }
    // wenn y untere Ende berührt snakeY erscheint am oberen Rand 
   else if (snakeY<-50){
-  snakeY = 600;
-  } else if (snakeY>600){
+  snakeY = windowHeight;
+  } else if (snakeY>windowHeight){
   snakeY = -50;
   }
-  drawGrid()
+  //drawGrid()
+  
   
 }  
 

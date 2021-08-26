@@ -13,3 +13,7 @@ canvas{
     background-color: magenta;
 }
 
+img {
+height: 400px;
+width: 100%;
+}
