@@ -8,9 +8,15 @@ h1{
     color:white;
     text-align: center;
 }
+marquee{
+    color: white;
+    text-align: center;
+}
 
 canvas{
-    background-color: magenta;
+    background-image: url("santiago-andres-chagueza-acevedo-TlUwpa7Kuu8-unsplash.jpg");
+    background-size: 100%;
+    
 }
 
 img {

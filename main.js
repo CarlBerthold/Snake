@@ -8,9 +8,11 @@ window.addEventListener("DOMContentLoaded", event => {
 let direction = 'right';
 
 // geschwindigkeit entlang der x Achse +rechts -Links
-let speed = 0;  
+let speed = 5;  
 
-
+// counter 
+document.querySelector('h2')
+let counter = 0;
 
 
 //preloading before setup 
@@ -29,8 +31,9 @@ function setup() {
    //snakeY = random(50,windowHeight-50);
     snakeWidth = 50;
     snakeHeight = 50;
-    snakeX = 50;
-    snakeY = 100;
+    snakeX = 500;
+    snakeY = 450; 
+
 
     
     
@@ -39,8 +42,8 @@ function setup() {
    //obstacleY = random(50,windowHeight-50);
     obstacleWidth = 50;
     obstacleHeight = 50;
-    obstacleX = 100;
-    obstacleY = 100;
+    obstacleX = 500;
+    obstacleY = 500;
 
     
     
@@ -53,23 +56,13 @@ function setup() {
  function colision() {
    //if (snakeY + snakeHeight < obstacleHeight && snakeX+ snakeWidth < obstacleWidth){
   
-   if (snakeX <= obstacleX && obstacleX> snakeX) {
-    console.log('links')
- //  //obstacleX = random(0,950);
- //  //obstacleY = random(0,550);
- //   //snakeWidth++
-}
-//
-  if (snakeX >= obstacleX && obstacleX < snakeX) {
-    console.log('rechts')
-  }
-
-if (snakeY <= obstacleY && obstacleY< snakeY) {
-  console.log('oben')
-}
-
-if (snakeY >= obstacleY && obstacleX > snakeX) {
-  console.log('unten')
+if (snakeX <= obstacleX && snakeY <= obstacleY || snakeX >= obstacleX && snakeY >= obstacleY) {
+  console.log('links')
+obstacleX = random(0,950);
+obstacleY = random(0,550);
+snakeWidth
+//snakeHeight
+counter++
 }
 
 }
